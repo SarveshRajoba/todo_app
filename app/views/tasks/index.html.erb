@@ -1,0 +1,74 @@
+<div class="task-header">
+  <h2 class="task-title">Add Task</h2>
+  <%= link_to '+ Task', new_task_path, class: "add-task-button" %>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 20px; margin-top: 30px;">
+  <% @tasks.each do |task| %>
+    <div style="width: 100%; background: #f9fafb; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- Title and Completion Checkbox -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <h3 style="margin: 0; font-size: 20px; <%= 'text-decoration: line-through;' if task.completed %>">
+            <%= task.title %>
+          </h3>
+          <%= button_to (task.completed ? '✅' : '⬜️'), toggle_complete_task_path(task), method: :patch, style: "border: none; background: none; cursor: pointer;" %>
+        </div>
+
+        <!-- Priority and Due Date -->
+        <div style="text-align: right;">
+          <span style="padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+            background-color: <%= task.priority == 'high' ? '#fee2e2' : task.priority == 'medium' ? '#fef9c3' : '#dcfce7' %>;
+            color: <%= task.priority == 'high' ? '#b91c1c' : task.priority == 'medium' ? '#92400e' : '#166534' %>;">
+            <%= task.priority&.capitalize || "Low" %>
+          </span>
+          <div style="font-size: 0.85rem; color: #4b5563; margin-top: 4px;">
+            📅 <%= task.due_date.present? ? task.due_date.strftime('%b %d, %Y') : 'No due date' %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p style="margin: 10px 0 20px; color: #555;"><%= task.description %></p>
+
+      <!-- Buttons -->
+      <div style="display: flex; gap: 10px;">
+        <%= link_to 'Edit', edit_task_path(task), style: "background-color: #3b82f6; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none;" %>
+        <%= button_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, style: "color: white; background: red; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer;" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+
+  .task-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .add-task-button {
+    background-color: #4f46e5; /* Indigo-600 */
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 16px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .add-task-button:hover {
+    background-color: #4338ca; /* Indigo-700 */
+  }
+</style>

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary: hsl(145deg 50% 92%);
+    --secondary: hsl(146deg 47% 40%);
+    --light-shadow: hsl(145deg 60% 85%);
+    --text-color: hsl(0 0% 30%);
+    --light-bg: #ffffff;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: hsl(146, 33%, 82%)
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.login-box {
+    background: hsl(191, 52%, 69%);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 0 1rem var(--light-shadow);
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-heading {
+    text-align: center;
+    font-size: 1.8em;
+    color: hsl(113, 84%, 15%);
+    margin-bottom: 1.5rem;
+}
+
+.login-form-label {
+    font-weight: 500;
+    margin-bottom: 0.4em;
+    color: var(--text-color);
+    display: block;
+}
+
+.login-form-input {
+    width: 100%;
+    padding: 0.75em;
+    background: #f1fdf4;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 0 0.5em var(--light-shadow);
+    outline: none;
+}
+
+.login-form-input:focus {
+    outline: 2px solid hsl(146deg 47% 50%);
+}
+
+.login-button {
+    padding: 1em;
+    width: 100%;
+    background: var(--secondary);
+    color: rgb(8, 87, 97);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: hsl(145, 38%, 66%);
+}
+
+.login-links {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin-top: 1.5rem;
+}
+
+.login-link {
+    color: hsl(164, 73%, 20%);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}

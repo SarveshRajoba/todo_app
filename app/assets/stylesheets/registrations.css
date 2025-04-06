@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary: hsl(145, 23%, 85%);
+    --secondary: hsl(202, 59%, 33%);
+    --light-shadow: hsl(148, 37%, 93%);
+    --text-color: hsl(0 0% 30%);
+    --light-bg: #e3edbf;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(180, 39%, 81%);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.signup-container {
+    background: var(--primary);
+    padding: 2em;
+    border-radius: 30px;
+    box-shadow: 0 0 1em var(--light-shadow);
+    width: 100%;
+    max-width: 450px;
+}
+
+.signup-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.signup-heading {
+    text-align: center;
+    font-size: 1.8em;
+    color: var(--secondary);
+}
+
+.form-group {
+    background: var(--light-bg);
+    padding: 1em;
+    border-radius: 20px;
+    box-shadow: 0 0 1.5em var(--light-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    color: var(--text-color);
+}
+
+.signup-form-input {
+    padding: 0.75em;
+    border: none;
+    border-radius: 10px;
+    background: #f9fdf1;
+    font-size: 1em;
+    outline: none;
+}
+
+.signup-button {
+    padding: 1em;
+    background: var(--secondary);
+    color: rgb(2, 54, 15);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-button:hover {
+    background-color: hsl(146deg 47% 35%);
+}
+
+.signup-links {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.signup-link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 1em;
+    /* Add vertical spacing between groups */
+}
+
+.signup-form-label {
+    font-weight: 500;
+    margin-bottom: 0.25em;
+}
+
+.form-text {
+    font-size: 0.85em;
+    margin-top: 0.3em;
+}

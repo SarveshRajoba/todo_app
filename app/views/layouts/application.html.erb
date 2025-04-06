@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Todo" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%# <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tasks", "data-turbo-track": "reload" %>
+     <%= stylesheet_link_tag "registrations", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "sessions", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <nav class="navbar">
+  <div class="navbar-brand">TodoApp</div>
+  <div class="navbar-links">
+    <% if user_signed_in? %>
+      <span class="navbar-user">Welcome, <%= current_user.email %></span>
+      <%= link_to 'Tasks', tasks_path, class: "navbar-link" %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-button" %>
+    <% else %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "navbar-link" %>
+      <%= link_to 'Login', new_user_session_path, class: "navbar-link" %>
+    <% end %>
+  </div>
+</nav>
+
+
+ <div id="flash-messages" style="text-align: center; margin: 10px 0;">
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>" style="
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      background-color: <%= key == 'alert' ? '#fee2e2' : '#d1fae5' %>;
+      color: <%= key == 'alert' ? '#991b1b' : '#065f46' %>;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: opacity 0.2s ease;">
+      <%= value %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  // Hide flash messages after 3 seconds
+  setTimeout(() => {
+    const flashBox = document.getElementById('flash-messages');
+    if (flashBox) {
+      flashBox.style.opacity = '0';
+      setTimeout(() => flashBox.remove(), 200); // Remove after fade out
+    }
+  }, 1800);
+</script>
+
+
+  <%= yield %>
+</body>
+
+</html>
+
